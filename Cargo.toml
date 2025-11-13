@@ -1,0 +1,56 @@
+[package]
+authors = ["LongYinan <lynweklm@gmail.com>"]
+edition = "2024"
+name    = "recording"
+version = "0.0.0"
+publish = false
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+napi        = "3.0.0"
+napi-derive = "3.0.0"
+rubato      = "0.16"
+symphonia   = { version = "0.5", features = ["all", "opt-simd"] }
+thiserror   = "2"
+
+[target.'cfg(target_os = "macos")'.dependencies]
+block2                 = "0.6"
+core-foundation        = { version = "0.10", features = ["with-uuid"] }
+coreaudio-rs           = "0.12"
+dispatch2              = "0.3"
+libc                   = "0.2"
+objc2                  = "0.6"
+objc2-core-audio       = "0.3"
+objc2-core-audio-types = "0.3"
+objc2-core-foundation  = "0.3"
+objc2-foundation       = "0.3"
+screencapturekit       = "0.3"
+uuid                   = { version = "1", features = ["v4"] }
+
+[target.'cfg(target_os = "windows")'.dependencies]
+cpal = "0.16"
+crossbeam-channel = "0.5"
+windows = { version = "0.62", features = [
+  "Win32_Devices_FunctionDiscovery",
+  "Win32_Foundation",
+  "Win32_Media_Audio",
+  "Win32_System_Com",
+  "Win32_System_Com_StructuredStorage",
+  "Win32_System_Diagnostics_ToolHelp",
+  "Win32_System_ProcessStatus",
+  "Win32_System_Threading",
+  "Win32_System_Variant",
+  "Win32_UI_Shell_PropertiesSystem",
+] }
+windows-core = { version = "0.62" }
+
+[build-dependencies]
+napi-build = "2"
+
+[profile.release]
+lto   = true
+strip = "symbols"

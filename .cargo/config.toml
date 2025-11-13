@@ -1,0 +1,8 @@
+[target.x86_64-pc-windows-msvc]
+rustflags = ["-C", "target-feature=+crt-static"]
+
+[target.'cfg(target_os = "macos")']
+rustflags = [
+  "-C",
+  "link-args=-weak_framework ScreenCaptureKit",
+]

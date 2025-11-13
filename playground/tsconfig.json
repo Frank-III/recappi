@@ -1,0 +1,13 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "./web",
+    "outDir": "./dist",
+    "jsx": "react-jsx",
+    "tsBuildInfoFile": "./dist/tsconfig.tsbuildinfo"
+  },
+  "include": ["./web", "server/types.d.ts"],
+  "references": [
+    { "path": "./tsconfig.node.json" }
+  ]
+}
