@@ -11,11 +11,13 @@ publish = false
 crate-type = ["cdylib"]
 
 [dependencies]
-napi        = "3.0.0"
+napi        = { version = "3.0.0", features = ["tokio_rt"] }
 napi-derive = "3.0.0"
 rubato      = "0.16"
+swift-rs    = "1.0.7"
 symphonia   = { version = "0.5", features = ["all", "opt-simd"] }
 thiserror   = "2"
+tokio       = { version = "1", features = ["sync", "rt-multi-thread", "test-util", "macros"] }
 
 [target.'cfg(target_os = "macos")'.dependencies]
 block2                 = "0.6"
@@ -50,6 +52,7 @@ windows-core = { version = "0.62" }
 
 [build-dependencies]
 napi-build = "2"
+swift-rs = { version = "1.0.7", features = ["build"] }
 
 [profile.release]
 lto   = true

@@ -7,6 +7,7 @@ pub mod ca_tap_description;
 pub(crate) mod cf_types;
 pub mod device;
 pub(crate) mod error;
+pub mod fluid_audio;
 pub mod pid;
 pub mod queue;
 pub mod screen_capture_kit;

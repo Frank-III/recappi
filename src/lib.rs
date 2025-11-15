@@ -9,3 +9,4 @@ pub mod windows;
 pub use windows::*;
 
 pub mod audio_decoder;
+pub mod fluid_audio_napi;
